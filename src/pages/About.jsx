@@ -41,7 +41,7 @@ export default function About() {
 
           <div className="lg:col-span-7">
             <motion.div {...fadeIn} className="aspect-[16/9] md:aspect-[21/9] overflow-hidden grayscale mb-12 md:mb-16 relative group">
-              <img src="/bedroom.png" alt="Studio Space" className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0" />
+              <img src={`${import.meta.env.BASE_URL}bedroom.png`} alt="Studio Space" className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0" />
               <div className="absolute inset-0 border border-white/10 group-hover:border-accent-red transition-colors" />
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">

@@ -22,7 +22,7 @@ export default function Home() {
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 0.6 }}
             transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-            src="/living-room.png"
+            src={`${import.meta.env.BASE_URL}living-room.png`}
             alt="Hero Architectural"
             className="w-full h-full object-cover grayscale"
           />
@@ -137,7 +137,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
             <motion.div {...fadeIn} className="group cursor-pointer">
               <div className="aspect-[16/10] sm:aspect-[16/9] overflow-hidden mb-6 md:mb-8 relative">
-                <img src="/living-room.png" className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0" alt="Project 1" />
+                <img src={`${import.meta.env.BASE_URL}living-room.png`} className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0" alt="Project 1" />
                 <div className="absolute top-6 left-6 md:top-8 md:left-8">
                   <span className="w-2 md:w-3 h-2 md:h-3 bg-accent-red rounded-full block opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
@@ -149,7 +149,7 @@ export default function Home() {
 
             <motion.div {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.3 }} className="group cursor-pointer md:mt-40">
               <div className="aspect-[16/10] sm:aspect-[16/9] overflow-hidden mb-6 md:mb-8 relative">
-                <img src="/bathroom.png" className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0" alt="Project 2" />
+                <img src={`${import.meta.env.BASE_URL}bathroom.png`} className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0" alt="Project 2" />
                 <div className="absolute top-6 left-6 md:top-8 md:left-8">
                   <span className="w-2 md:w-3 h-2 md:h-3 bg-accent-red rounded-full block opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>

@@ -34,7 +34,7 @@ function AnimatedRoutes() {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/NoirSpaces">
       <div className="min-h-screen bg-black text-white selection:bg-accent-red selection:text-white">
         <Header />
         <main>

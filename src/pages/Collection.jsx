@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
 const projects = [
-  { id: 1, title: "RIMSKI VRELEC SPA HOTEL", location: "KOTLJE, SLOVENIA", year: "2024", image: "/living-room.png" },
-  { id: 2, title: "BOSPHORUS RETREAT", location: "ISTANBUL, TURKEY", year: "2023", image: "/bathroom.png" },
-  { id: 3, title: "ZENITH OFFICE COMPLEX", location: "LONDON, UK", year: "2023", image: "/bedroom.png" },
-  { id: 4, title: "MONO CLINIC", location: "ROME, ITALY", year: "2024", image: "/living-room.png" },
-  { id: 5, title: "VELVET LOUNGE", location: "MILAN, ITALY", year: "2023", image: "/bathroom.png" },
-  { id: 6, title: "SHADOW LOFT", location: "BERLIN, GERMANY", year: "2024", image: "/bedroom.png" },
+  { id: 1, title: "RIMSKI VRELEC SPA HOTEL", location: "KOTLJE, SLOVENIA", year: "2024", image: `${import.meta.env.BASE_URL}living-room.png` },
+  { id: 2, title: "BOSPHORUS RETREAT", location: "ISTANBUL, TURKEY", year: "2023", image: `${import.meta.env.BASE_URL}bathroom.png` },
+  { id: 3, title: "ZENITH OFFICE COMPLEX", location: "LONDON, UK", year: "2023", image: `${import.meta.env.BASE_URL}bedroom.png` },
+  { id: 4, title: "MONO CLINIC", location: "ROME, ITALY", year: "2024", image: `${import.meta.env.BASE_URL}living-room.png` },
+  { id: 5, title: "VELVET LOUNGE", location: "MILAN, ITALY", year: "2023", image: `${import.meta.env.BASE_URL}bathroom.png` },
+  { id: 6, title: "SHADOW LOFT", location: "BERLIN, GERMANY", year: "2024", image: `${import.meta.env.BASE_URL}bedroom.png` },
 ];
 
 export default function Collection() {
