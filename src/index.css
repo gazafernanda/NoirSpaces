@@ -19,9 +19,37 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     margin: 0;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    line-height: 1.1;
   }
 }
 
+@layer utilities {
+  .text-responsive-hero {
+    font-size: clamp(3rem, 12vw, 10rem);
+  }
+
+  .text-responsive-heading {
+    font-size: clamp(2rem, 6vw, 4rem);
+  }
+
+  .px-responsive {
+    padding-left: clamp(1.5rem, 5vw, 4rem);
+    padding-right: clamp(1.5rem, 5vw, 4rem);
+  }
+}
+
+/* Global Styling Utilities */
 @layer utilities {
   .divider-thin {
     height: 1px;
@@ -40,6 +68,19 @@
   .text-modernist {
     letter-spacing: 0.05em;
     text-transform: uppercase;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 }
 

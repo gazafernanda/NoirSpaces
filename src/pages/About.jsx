@@ -16,36 +16,36 @@ const team = [
 
 export default function About() {
   return (
-    <div className="bg-black pt-48 pb-12 px-12">
+    <div className="bg-black pt-32 md:pt-48 pb-12 px-responsive">
       <div className="max-w-[1400px] mx-auto">
-        <header className="mb-32">
+        <header className="mb-16 md:mb-32">
           <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-7xl font-bold tracking-tighter mb-8 italic"
+            className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 italic"
           >
             STUDIO.
           </motion.h1>
-          <div className="w-24 h-[1px] bg-accent-red" />
+          <div className="w-16 md:w-24 h-[1px] bg-accent-red" />
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 mb-64">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-24 mb-32 md:mb-64">
           <div className="lg:col-span-12">
             <motion.h2
               {...fadeIn}
-              className="text-4xl md:text-[6vw] font-light leading-tight tracking-tighter uppercase mb-24"
+              className="text-4xl md:text-[6vw] font-light leading-tight tracking-tighter uppercase mb-16 md:mb-24"
             >
               ARCHITECTURAL <span className="italic font-bold">EXCELLENCE</span> THROUGH <span className="text-accent-red italic">MODERNIST</span> RESTRAINT.
             </motion.h2>
           </div>
 
           <div className="lg:col-span-7">
-            <motion.div {...fadeIn} className="aspect-[21/9] overflow-hidden grayscale mb-16 relative group">
+            <motion.div {...fadeIn} className="aspect-[16/9] md:aspect-[21/9] overflow-hidden grayscale mb-12 md:mb-16 relative group">
               <img src="/bedroom.png" alt="Studio Space" className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0" />
               <div className="absolute inset-0 border border-white/10 group-hover:border-accent-red transition-colors" />
             </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <motion.p {...fadeIn} className="text-lg font-light leading-relaxed">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              <motion.p {...fadeIn} className="text-base md:text-lg font-light leading-relaxed">
                 Founded in 2012, NoirSpaces is a multidisciplinary architectural studio dedicated to creating spaces that transcend the ordinary. We believe that architecture should be a reflection of its context, yet remain timeless in its execution.
               </motion.p>
               <motion.p {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.2 }} className="text-white/40 text-sm leading-relaxed">
@@ -54,46 +54,46 @@ export default function About() {
             </div>
           </div>
 
-          <div className="lg:col-start-9 lg:col-span-4 self-center">
-            <motion.div {...fadeIn} className="flex flex-col gap-12 border-l border-white/10 pl-12">
+          <div className="lg:col-start-9 lg:col-span-4 self-center mt-12 lg:mt-0">
+            <motion.div {...fadeIn} className="flex flex-col gap-12 border-l border-white/10 pl-8 md:pl-12">
               <div>
                 <h4 className="text-[10px] tracking-[0.3em] text-accent-red mb-4 uppercase">Awards</h4>
-                <p className="text-xl font-medium tracking-tight">Milan Design Gold 2024</p>
-                <p className="text-xl font-medium tracking-tight opacity-40">Modernist Icon 2023</p>
-                <p className="text-xl font-medium tracking-tight opacity-20">A+ Architecture 2022</p>
+                <p className="text-lg md:text-xl font-medium tracking-tight">Milan Design Gold 2024</p>
+                <p className="text-lg md:text-xl font-medium tracking-tight opacity-40">Modernist Icon 2023</p>
+                <p className="text-lg md:text-xl font-medium tracking-tight opacity-20">A+ Architecture 2022</p>
               </div>
             </motion.div>
           </div>
         </div>
 
-        {/* The Team - NEW SECTION */}
-        <section className="mb-64">
-          <motion.h3 {...fadeIn} className="text-accent-red text-[10px] tracking-[0.4em] mb-24 uppercase font-bold text-center">THE TEAM</motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+        {/* The Team */}
+        <section className="mb-32 md:mb-64">
+          <motion.h3 {...fadeIn} className="text-accent-red text-[10px] tracking-[0.4em] mb-16 md:mb-24 uppercase font-bold text-center">THE TEAM</motion.h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             {team.map((member, i) => (
               <motion.div
                 key={member.name}
                 {...fadeIn}
                 transition={{ ...fadeIn.transition, delay: i * 0.1 }}
-                className="group p-8 border border-white/5 hover:border-accent-red transition-colors"
+                className="group p-6 md:p-8 border border-white/5 hover:border-accent-red transition-colors"
               >
-                <h4 className="text-2xl font-bold tracking-tighter mb-1 italic">{member.name}</h4>
-                <p className="text-[11px] tracking-widest text-accent-red mb-4 uppercase">{member.role}</p>
-                <p className="text-white/20 text-[10px] tracking-[0.2em]">{member.origin.toUpperCase()}</p>
+                <h4 className="text-xl md:text-2xl font-bold tracking-tighter mb-1 italic">{member.name}</h4>
+                <p className="text-[10px] md:text-[11px] tracking-widest text-accent-red mb-4 uppercase">{member.role}</p>
+                <p className="text-white/20 text-[9px] md:text-[10px] tracking-[0.2em]">{member.origin.toUpperCase()}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* Partners - NEW SECTION */}
-        <section className="mb-64 py-24 border-y border-white/5">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 opacity-20">
+        {/* Partners */}
+        <section className="mb-32 md:mb-64 py-16 md:py-24 border-y border-white/5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 md:gap-12 opacity-20">
             {["MATERIAL", "LIGHT CO.", "URBANITY", "SENSES", "MONO", "LEVELS"].map((partner, i) => (
               <motion.span
                 key={partner}
                 {...fadeIn}
                 transition={{ ...fadeIn.transition, delay: i * 0.05 }}
-                className="text-[10px] tracking-[0.5em] text-center font-bold"
+                className="text-[9px] md:text-[10px] tracking-[0.4em] md:tracking-[0.5em] text-center font-bold"
               >
                 {partner}
               </motion.span>
@@ -101,14 +101,14 @@ export default function About() {
           </div>
         </section>
 
-        <section className="py-40 text-center">
+        <section className="py-24 md:py-40 text-center overflow-hidden">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-[10vw] font-bold tracking-tighter leading-none opacity-5 mb-12 italic">BEYOND DESIGN</h3>
-            <p className="text-white/40 text-[10px] tracking-[0.5em] uppercase">Milan / Istanbul / London</p>
+            <h3 className="text-[15vw] md:text-[10vw] font-bold tracking-tighter leading-none opacity-5 mb-8 md:mb-12 italic">BEYOND DESIGN</h3>
+            <p className="text-white/40 text-[9px] md:text-[10px] tracking-[0.5em] uppercase px-4">Milan / Istanbul / London</p>
           </motion.div>
         </section>
       </div>

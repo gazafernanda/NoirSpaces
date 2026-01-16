@@ -1,41 +1,40 @@
 export default function Footer() {
     return (
-        <footer className="bg-black py-24 px-12 border-t border-white/10">
-            <div className="max-w-[1400px] mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
-                    <div className="col-span-1 md:col-span-2">
-                        <h2 className="text-3xl font-bold tracking-tighter mb-8 italic">NOIRSPACES.</h2>
-                        <p className="text-white/40 max-w-sm text-sm leading-relaxed">
-                            We approach every project with a modernist lens, focusing on the essential interplay of form, light, and context.
-                        </p>
+        <footer className="bg-black border-t border-white/5 pt-20 md:pt-32 pb-12 px-responsive text-white">
+            <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
+                <div className="lg:col-span-1">
+                    <div className="flex items-baseline gap-1 mb-8">
+                        <span className="text-xl font-bold tracking-tighter">NOIR</span>
+                        <span className="text-xl font-light tracking-tighter opacity-70">SPACES</span>
+                        <span className="text-accent-red text-2xl leading-[0] translate-y-[2px]">.</span>
                     </div>
-
-                    <div>
-                        <h4 className="text-[10px] tracking-[0.3em] text-accent-red mb-8">LOCATIONS</h4>
-                        <div className="flex flex-col gap-6 text-[13px] text-white/60">
-                            <p>MILAN<br /><span className="text-[11px] opacity-40 italic">Via Durini 14, 20122</span></p>
-                            <p>ISTANBUL<br /><span className="text-[11px] opacity-40 italic">Kuzguncuk, No. 34</span></p>
-                            <p>LONDON<br /><span className="text-[11px] opacity-40 italic">Shoreditch, E1 6JJ</span></p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h4 className="text-[10px] tracking-[0.3em] text-accent-red mb-8">CONTACT</h4>
-                        <div className="flex flex-col gap-4 text-[13px] text-white/60">
-                            <a href="mailto:studio@noirspaces.com" className="hover:text-white transition-colors no-underline">studio@noirspaces.com</a>
-                            <p>+39 02 123 4567</p>
-                            <div className="flex gap-4 mt-4">
-                                <a href="#" className="hover:text-accent-red transition-colors no-underline">IG</a>
-                                <a href="#" className="hover:text-accent-red transition-colors no-underline">TW</a>
-                                <a href="#" className="hover:text-accent-red transition-colors no-underline">LI</a>
-                            </div>
-                        </div>
-                    </div>
+                    <p className="text-white/30 text-[10px] tracking-[0.4em] leading-loose max-w-[200px]">
+                        ARCHITECTING THE FUTURE THROUGH MODERNIST EXCELLENCE.
+                    </p>
                 </div>
 
-                <div className="flex justify-between items-center pt-12 border-t border-white/5 text-[10px] tracking-[0.2em] text-white/20">
-                    <span>&copy; 2024 NOIRSPACES ARCHITECTS</span>
-                    <span className="hover:text-white pointer-events-none transition-colors italic">BEYOND ARCHITECTURE</span>
+                <div>
+                    <h4 className="text-[10px] tracking-[0.4em] text-accent-red mb-8 uppercase font-bold">Studios</h4>
+                    <ul className="flex flex-col gap-4 text-[11px] tracking-[0.2em] text-white/40 list-none p-0">
+                        <li className="hover:text-white transition-colors cursor-default">MILAN - HQ</li>
+                        <li className="hover:text-white transition-colors cursor-default">ISTANBUL - EASTERN HUB</li>
+                        <li className="hover:text-white transition-colors cursor-default">LONDON - CREATIVE</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 className="text-[10px] tracking-[0.4em] text-accent-red mb-8 uppercase font-bold">Contact</h4>
+                    <p className="text-[11px] tracking-[0.2em] text-white/40 leading-loose">
+                        studio@noirspaces.arch<br />
+                        +39 02 123 4567
+                    </p>
+                </div>
+
+                <div className="lg:text-right flex flex-col justify-between h-full min-h-[100px]">
+                    <div>
+                        <h4 className="text-[10px] tracking-[0.4em] text-accent-red mb-8 uppercase font-bold italic">FOLLOW.</h4>
+                    </div>
+                    <p className="text-[9px] tracking-[0.4em] text-white/20 uppercase italic">© 2024 NOIRSPACES / BEYOND DESIGN</p>
                 </div>
             </div>
         </footer>
