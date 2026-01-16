@@ -1,300 +1,117 @@
-import { useState, useEffect } from "react";
-console.log("About page loaded");
-import { useNavigate, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
-const stats = [
-  { number: "150+", label: "Projects Completed" },
-  { number: "12", label: "Years Experience" },
-  { number: "45", label: "Awards Won" },
-  { number: "98%", label: "Client Satisfaction" },
-];
-
-const team = [
-  { name: "Alexander Noir", role: "Founder & Lead Architect", initial: "AN" },
-  { name: "Sofia Chen", role: "Interior Design Director", initial: "SC" },
-  { name: "Marcus Webb", role: "Creative Director", initial: "MW" },
-];
-
-const generateParticles = (count) => {
-  return Array.from({ length: count }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    width: Math.random() * 15 + 8,
-    height: Math.random() * 2 + 1,
-    rotation: Math.random() * 360,
-    opacity: Math.random() * 0.4 + 0.15,
-    speed: Math.random() * 0.8 + 0.3,
-  }));
+const fadeIn = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
 };
 
-function About() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [particles] = useState(() => generateParticles(80));
-  const [isLoaded, setIsLoaded] = useState(false);
+const team = [
+  { name: "Sofia Rossi", role: "Principal Architect", origin: "Milan" },
+  { name: "Julian Thorne", role: "Creative Director", origin: "London" },
+  { name: "Ezgi Kaya", role: "Interior Lead", origin: "Istanbul" },
+  { name: "Marcus Vane", role: "Senior Planner", origin: "Berlin" },
+];
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-
-
+export default function About() {
   return (
-    <div
-      className={`page min-h-screen relative overflow-x-hidden overflow-y-auto bg-gradient-to-br from-[#050507] via-[#0a0a0c] to-[#0d0d10]`}
-    >
-      {/* Parallax Lines */}
-      <div
-        className="fixed top-0 left-0 w-full h-full pointer-events-none z-10 overflow-hidden"
-        aria-hidden="true"
-      >
-        {particles.map((particle) => (
-          <div
-            key={particle.id}
-            className="absolute bg-gradient-to-r from-transparent via-[#ff6b35]/60 to-transparent rounded-sm transition-transform duration-150"
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: `${particle.width}px`,
-              height: `${particle.height}px`,
-              opacity: particle.opacity,
-              transform: `rotate(${particle.rotation}deg)`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Ambient Glows */}
-      <div
-        className="fixed w-[600px] h-[600px] rounded-full pointer-events-none opacity-15 blur-[100px] z-0 transition-transform duration-500"
-        style={{
-          top: "-200px",
-          right: "-200px",
-          background: "radial-gradient(circle, #ff6b35 0%, transparent 70%)",
-        }}
-      />
-      <div
-        className="fixed w-[600px] h-[600px] rounded-full pointer-events-none opacity-15 blur-[100px] z-0 transition-transform duration-500"
-        style={{
-          bottom: "-300px",
-          left: "-200px",
-          background: "radial-gradient(circle, #1e3a5f 0%, transparent 70%)",
-        }}
-      />
-
-      {/* Main Content */}
-      <main className="min-h-screen pt-32 px-12 pb-24 relative z-20 flex justify-center">
-        <div className="max-w-[900px] w-full">
-          {/* Header */}
-          <header
-            className={`text-center mb-16 transition-all duration-800 ${isLoaded
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 -translate-y-8"
-              }`}
+    <div className="bg-black pt-48 pb-12 px-12">
+      <div className="max-w-[1400px] mx-auto">
+        <header className="mb-32">
+          <motion.h1
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-7xl font-bold tracking-tighter mb-8 italic"
           >
-            <div className="text-xs uppercase tracking-[0.3em] text-[#ff6b35] mb-4">
-              About
-            </div>
-            <h1 className="font-['Playfair_Display'] text-4xl lg:text-5xl leading-tight">
-              <span className="font-extralight text-[rgba(255,255,255,0.5)]">
-                Crafting
-              </span>
-              <span className="block font-semibold">Darkness</span>
-            </h1>
-          </header>
+            STUDIO.
+          </motion.h1>
+          <div className="w-24 h-[1px] bg-accent-red" />
+        </header>
 
-          {/* Intro */}
-          <div
-            className={`mb-16 transition-all duration-800 delay-200 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-              }`}
-          >
-            <p className="text-lg leading-relaxed text-[rgba(255,255,255,0.5)] text-center mb-6">
-              At <span className="text-[#ff6b35] font-medium">Architecs</span>,
-              we believe that true luxury lies in the shadows. Since 2012, we've
-              been transforming spaces into sophisticated sanctuaries where
-              darkness becomes an art form.
-            </p>
-            <p className="text-base text-[rgba(255,255,255,0.3)] text-center">
-              Our philosophy is simple: embrace the night. We specialize in
-              creating interiors that captivate through contrast, using deep
-              tones and strategic lighting to craft environments that are both
-              dramatic and deeply comfortable.
-            </p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 mb-64">
+          <div className="lg:col-span-12">
+            <motion.h2
+              {...fadeIn}
+              className="text-4xl md:text-[6vw] font-light leading-tight tracking-tighter uppercase mb-24"
+            >
+              ARCHITECTURAL <span className="italic font-bold">EXCELLENCE</span> THROUGH <span className="text-accent-red italic">MODERNIST</span> RESTRAINT.
+            </motion.h2>
           </div>
 
-          {/* Stats */}
-          <div
-            className={`grid grid-cols-2 lg:grid-cols-4 gap-8 py-12 border-y border-[rgba(255,255,255,0.08)] mb-16 transition-all duration-800 delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-              }`}
-          >
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="text-center transition-transform duration-300"
-                style={{}}
-              >
-                <span className="font-['Playfair_Display'] text-3xl lg:text-4xl font-semibold text-[#f5f5f5] block mb-2">
-                  {stat.number}
-                </span>
-                <span className="text-xs uppercase tracking-[0.1em] text-[rgba(255,255,255,0.3)]">
-                  {stat.label}
-                </span>
+          <div className="lg:col-span-7">
+            <motion.div {...fadeIn} className="aspect-[21/9] overflow-hidden grayscale mb-16 relative group">
+              <img src="/bedroom.png" alt="Studio Space" className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0" />
+              <div className="absolute inset-0 border border-white/10 group-hover:border-accent-red transition-colors" />
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <motion.p {...fadeIn} className="text-lg font-light leading-relaxed">
+                Founded in 2012, NoirSpaces is a multidisciplinary architectural studio dedicated to creating spaces that transcend the ordinary. We believe that architecture should be a reflection of its context, yet remain timeless in its execution.
+              </motion.p>
+              <motion.p {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.2 }} className="text-white/40 text-sm leading-relaxed">
+                Our approach is rooted in the interplay of shadow and light. By utilizing monochromatic palettes and raw materials, we allow the form of the architecture to speak for itself. We don't just build structures; we craft environments.
+              </motion.p>
+            </div>
+          </div>
+
+          <div className="lg:col-start-9 lg:col-span-4 self-center">
+            <motion.div {...fadeIn} className="flex flex-col gap-12 border-l border-white/10 pl-12">
+              <div>
+                <h4 className="text-[10px] tracking-[0.3em] text-accent-red mb-4 uppercase">Awards</h4>
+                <p className="text-xl font-medium tracking-tight">Milan Design Gold 2024</p>
+                <p className="text-xl font-medium tracking-tight opacity-40">Modernist Icon 2023</p>
+                <p className="text-xl font-medium tracking-tight opacity-20">A+ Architecture 2022</p>
               </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* The Team - NEW SECTION */}
+        <section className="mb-64">
+          <motion.h3 {...fadeIn} className="text-accent-red text-[10px] tracking-[0.4em] mb-24 uppercase font-bold text-center">THE TEAM</motion.h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+            {team.map((member, i) => (
+              <motion.div
+                key={member.name}
+                {...fadeIn}
+                transition={{ ...fadeIn.transition, delay: i * 0.1 }}
+                className="group p-8 border border-white/5 hover:border-accent-red transition-colors"
+              >
+                <h4 className="text-2xl font-bold tracking-tighter mb-1 italic">{member.name}</h4>
+                <p className="text-[11px] tracking-widest text-accent-red mb-4 uppercase">{member.role}</p>
+                <p className="text-white/20 text-[10px] tracking-[0.2em]">{member.origin.toUpperCase()}</p>
+              </motion.div>
             ))}
           </div>
+        </section>
 
-          {/* Team */}
-          <div
-            className={`mb-16 transition-all duration-800 delay-400 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-              }`}
-          >
-            <h2 className="font-['Playfair_Display'] text-2xl font-medium text-center mb-10 text-[#f5f5f5]">
-              The Visionaries
-            </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {team.map((member, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center text-center p-6 bg-[rgba(255,255,255,0.02)] rounded-2xl border border-[rgba(255,255,255,0.08)] transition-all duration-400 hover:bg-[rgba(255,255,255,0.05)] hover:border-[rgba(255,107,53,0.3)] hover:-translate-y-1"
-                  style={{
-                    animationDelay: `${0.5 + index * 0.15}s`,
-                  }}
-                >
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#ff6b35] to-[#ff8f5a] flex items-center justify-center mb-6 transition-transform duration-300 hover:scale-110">
-                    <span className="text-lg font-semibold text-[#0a0a0c]">
-                      {member.initial}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-medium mb-1 text-[#f5f5f5]">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm text-[rgba(255,255,255,0.3)]">
-                    {member.role}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Contact */}
-          <div
-            className={`text-center py-16 transition-all duration-800 delay-500 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-              }`}
-          >
-            <h2 className="font-['Playfair_Display'] text-2xl font-medium mb-6 text-[#f5f5f5]">
-              Start Your Journey
-            </h2>
-            <p className="text-base text-[rgba(255,255,255,0.3)] mb-8">
-              Ready to transform your space into a masterpiece of darkness?
-            </p>
-            <a
-              href="mailto:hello@architecs.com"
-              className="inline-flex items-center gap-3 px-8 py-4 border border-[#ff6b35] text-[#ff6b35] text-sm font-medium no-underline tracking-[0.05em] transition-all duration-300 relative overflow-hidden hover:text-[#0a0a0c]"
-            >
-              <span className="absolute inset-0 bg-[#ff6b35] -translate-x-full transition-transform duration-300 z-0" />
-              <span className="relative z-10">Get In Touch</span>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="relative z-10 transition-transform duration-300"
+        {/* Partners - NEW SECTION */}
+        <section className="mb-64 py-24 border-y border-white/5">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 opacity-20">
+            {["MATERIAL", "LIGHT CO.", "URBANITY", "SENSES", "MONO", "LEVELS"].map((partner, i) => (
+              <motion.span
+                key={partner}
+                {...fadeIn}
+                transition={{ ...fadeIn.transition, delay: i * 0.05 }}
+                className="text-[10px] tracking-[0.5em] text-center font-bold"
               >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
+                {partner}
+              </motion.span>
+            ))}
           </div>
-        </div>
-      </main>
+        </section>
 
-      {/* Footer Controls */}
-      <footer
-        className={`fixed bottom-0 left-0 right-0 flex justify-between items-center px-12 py-8 z-50 transition-all duration-800 delay-600 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-          }`}
-      >
-        {/* Page Indicator */}
-        <div className="flex gap-4">
-          <button
-            className={`w-3 h-3 rounded-full border-none cursor-pointer transition-all duration-300 ${location.pathname === "/"
-              ? "bg-[rgba(255,255,255,0.3)]"
-              : "bg-[rgba(255,255,255,0.3)]"
-              }`}
-            onClick={() => navigate("/")}
-            aria-label="Go to Home"
-          />
-          <button
-            className={`w-3 h-3 rounded-full border-none cursor-pointer transition-all duration-300 ${location.pathname === "/collection"
-              ? "bg-[rgba(255,255,255,0.3)]"
-              : "bg-[rgba(255,255,255,0.3)]"
-              }`}
-            onClick={() => navigate("/collection")}
-            aria-label="Go to Collection"
-          />
-          <button
-            className={`w-3 h-3 rounded-full border-none cursor-pointer transition-all duration-300 ${location.pathname === "/about"
-              ? "bg-[#ff6b35] scale-110 shadow-[0_0_15px_rgba(255,107,53,0.5)]"
-              : "bg-[rgba(255,255,255,0.3)] hover:bg-[rgba(255,255,255,0.5)] hover:scale-130"
-              }`}
-            onClick={() => navigate("/about")}
-            aria-label="Go to About"
-          />
-        </div>
-
-        {/* Pagination */}
-        <div className="flex items-center gap-6">
-          <span className="text-sm text-[rgba(255,255,255,0.5)] tracking-[0.1em]">
-            <span className="text-[#f5f5f5] font-medium">03</span>
-            {" / "}
-            <span>03</span>
-          </span>
-
-          <button
-            className="w-12 h-12 border border-[rgba(255,255,255,0.08)] bg-transparent text-[#f5f5f5] cursor-pointer flex items-center justify-center transition-all duration-300 relative overflow-hidden hover:scale-105 hover:border-[#ff6b35]"
-            onClick={() => navigate("/collection")}
-            aria-label="Previous page"
+        <section className="py-40 text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
           >
-            <div className="absolute inset-0 bg-[#ff6b35] -translate-x-full transition-transform duration-300 z-0" />
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="relative z-10 transition-transform duration-300"
-            >
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <button
-            className="w-12 h-12 border border-[rgba(255,255,255,0.08)] bg-transparent text-[#f5f5f5] cursor-pointer flex items-center justify-center transition-all duration-300 relative overflow-hidden hover:scale-105 hover:border-[#ff6b35]"
-            onClick={() => navigate("/")}
-            aria-label="Back to home"
-          >
-            <div className="absolute inset-0 bg-[#ff6b35] -translate-x-full transition-transform duration-300 z-0" />
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="relative z-10 transition-transform duration-300"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-      </footer>
-
-
+            <h3 className="text-[10vw] font-bold tracking-tighter leading-none opacity-5 mb-12 italic">BEYOND DESIGN</h3>
+            <p className="text-white/40 text-[10px] tracking-[0.5em] uppercase">Milan / Istanbul / London</p>
+          </motion.div>
+        </section>
+      </div>
     </div>
   );
 }
-
-export default About;

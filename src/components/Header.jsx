@@ -1,72 +1,53 @@
 import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-function Header() {
+export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: "STUDIO", path: "/about" },
+    { name: "PROJECTS", path: "/collection" },
+    { name: "CONTACT", path: "/contact" },
+  ];
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-6 bg-gradient-to-b from-[#0a0a0c]/95 to-transparent backdrop-blur-sm">
-      <NavLink
-        to="/"
-        className="font-['Inter'] text-lg font-normal tracking-[0.1em] text-[#f5f5f5] no-underline opacity-100 transition-opacity duration-300 hover:opacity-80"
-      >
-        Architecs
-      </NavLink>
+    <header
+      className={`fixed top-0 left-0 right-0 z-[100] px-12 py-8 transition-all duration-300 ${scrolled ? "bg-black/90 backdrop-blur-sm py-6" : "bg-transparent"
+        }`}
+    >
+      <div className="max-w-[1400px] mx-auto flex justify-between items-center">
+        <NavLink to="/" className="text-white no-underline group flex items-baseline gap-1">
+          <span className="text-xl font-bold tracking-tighter">NOIR</span>
+          <span className="text-xl font-light tracking-tighter opacity-70">SPACES</span>
+          <span className="text-accent-red text-2xl leading-[0] translate-y-[2px]">.</span>
+        </NavLink>
 
-      <nav className="flex items-center gap-8">
-        <ul className="flex gap-8 list-none m-0 p-0">
-          <li>
+        <nav className="flex gap-16">
+          {navLinks.map((link) => (
             <NavLink
-              to="/"
+              key={link.path}
+              to={link.path}
               className={({ isActive }) =>
-                `text-[rgba(255,255,255,0.5)] no-underline text-sm font-normal tracking-[0.02em] relative pb-1 transition-all duration-300 ${
-                  isActive
-                    ? "text-[#f5f5f5] after:w-full"
-                    : "hover:text-[#f5f5f5]"
-                } after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-[#f5f5f5] after:transition-all after:duration-300`
+                `text-[11px] font-medium tracking-[0.2em] uppercase no-underline transition-all duration-300 flex items-center gap-2 ${isActive ? "text-white" : "text-white/40 hover:text-white"
+                }`
               }
             >
-              Home
+              {({ isActive }) => (
+                <>
+                  {isActive && <span className="w-1.5 h-1.5 bg-accent-red rounded-full shadow-[0_0_8px_rgba(255,0,0,0.5)]" />}
+                  {link.name}
+                </>
+              )}
             </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/collection"
-              className={({ isActive }) =>
-                `text-[rgba(255,255,255,0.5)] no-underline text-sm font-normal tracking-[0.02em] relative pb-1 transition-all duration-300 ${
-                  isActive
-                    ? "text-[#f5f5f5] after:w-full"
-                    : "hover:text-[#f5f5f5]"
-                } after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-[#f5f5f5] after:transition-all after:duration-300`
-              }
-            >
-              Collection
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                `text-[rgba(255,255,255,0.5)] no-underline text-sm font-normal tracking-[0.02em] relative pb-1 transition-all duration-300 ${
-                  isActive
-                    ? "text-[#f5f5f5] after:w-full"
-                    : "hover:text-[#f5f5f5]"
-                } after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-[#f5f5f5] after:transition-all after:duration-300`
-              }
-            >
-              About
-            </NavLink>
-          </li>
-        </ul>
-
-        <button
-          className="flex flex-col gap-1.5 bg-none border-none cursor-pointer p-2 ml-6 transition-transform duration-300 hover:scale-110"
-          aria-label="Open menu"
-        >
-          <span className="w-6 h-0.5 bg-[#f5f5f5] block transition-all duration-300" />
-          <span className="w-6 h-0.5 bg-[#f5f5f5] block transition-all duration-300" />
-          <span className="w-6 h-0.5 bg-[#f5f5f5] block transition-all duration-300" />
-        </button>
-      </nav>
+          ))}
+        </nav>
+      </div>
     </header>
   );
 }
-
-export default Header;
