@@ -37,8 +37,8 @@ export default function Home() {
           >
             <h1 className="text-white/20 text-[9px] md:text-[10px] tracking-[0.5em] mb-8 md:mb-12">SINCE 2012 / MILAN</h1>
             <div className="flex flex-col">
-              <span className="text-[14vw] md:text-[12vw] font-bold tracking-tighter leading-[0.85] italic">BEYOND</span>
-              <span className="text-[10vw] md:text-[12vw] font-light tracking-tighter leading-[0.85] ml-[10vw] md:ml-[15vw]">ARCHITECTURE</span>
+              <span className="text-[14vw] md:text-[10vw] font-bold tracking-tighter leading-[0.85] italic">BEYOND</span>
+              <span className="text-[10vw] md:text-[10vw] font-light tracking-tighter leading-[0.85] ml-[10vw] md:ml-[12vw]">ARCHITECTURE</span>
             </div>
           </motion.div>
         </div>

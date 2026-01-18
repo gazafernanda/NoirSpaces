@@ -1,16 +1,22 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const projects = [
-  { id: 1, title: "RIMSKI VRELEC SPA HOTEL", location: "KOTLJE, SLOVENIA", year: "2024", image: `${import.meta.env.BASE_URL}living-room.png` },
-  { id: 2, title: "BOSPHORUS RETREAT", location: "ISTANBUL, TURKEY", year: "2023", image: `${import.meta.env.BASE_URL}bathroom.png` },
-  { id: 3, title: "ZENITH OFFICE COMPLEX", location: "LONDON, UK", year: "2023", image: `${import.meta.env.BASE_URL}bedroom.png` },
-  { id: 4, title: "MONO CLINIC", location: "ROME, ITALY", year: "2024", image: `${import.meta.env.BASE_URL}living-room.png` },
-  { id: 5, title: "VELVET LOUNGE", location: "MILAN, ITALY", year: "2023", image: `${import.meta.env.BASE_URL}bathroom.png` },
-  { id: 6, title: "SHADOW LOFT", location: "BERLIN, GERMANY", year: "2024", image: `${import.meta.env.BASE_URL}bedroom.png` },
+  { id: 1, title: "RIMSKI VRELEC SPA HOTEL", location: "KOTLJE, SLOVENIA", year: "2024", image: `${import.meta.env.BASE_URL}living-room.png`, category: "COMMERCIAL" },
+  { id: 2, title: "BOSPHORUS RETREAT", location: "ISTANBUL, TURKEY", year: "2023", image: `${import.meta.env.BASE_URL}bathroom.png`, category: "RESIDENTIAL" },
+  { id: 3, title: "ZENITH OFFICE COMPLEX", location: "LONDON, UK", year: "2023", image: `${import.meta.env.BASE_URL}bedroom.png`, category: "COMMERCIAL" },
+  { id: 4, title: "MONO CLINIC", location: "ROME, ITALY", year: "2024", image: `${import.meta.env.BASE_URL}living-room.png`, category: "COMMERCIAL" },
+  { id: 5, title: "VELVET LOUNGE", location: "MILAN, ITALY", year: "2023", image: `${import.meta.env.BASE_URL}bathroom.png`, category: "INTERIOR" },
+  { id: 6, title: "SHADOW LOFT", location: "BERLIN, GERMANY", year: "2024", image: `${import.meta.env.BASE_URL}bedroom.png`, category: "RESIDENTIAL" },
 ];
 
 export default function Collection() {
+  const [activeCategory, setActiveCategory] = useState("ALL");
   const categories = ["ALL", "RESIDENTIAL", "COMMERCIAL", "CULTURAL", "INTERIOR"];
+
+  const filteredProjects = activeCategory === "ALL"
+    ? projects
+    : projects.filter(project => project.category === activeCategory);
 
   return (
     <div className="bg-black pt-32 md:pt-48 pb-24 md:pb-40 px-responsive">
@@ -32,7 +38,8 @@ export default function Collection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: i * 0.1 }}
-                className={`text-[9px] md:text-[11px] tracking-[0.3em] whitespace-nowrap transition-colors ${cat === "ALL" ? "text-accent-red font-bold" : "text-white/30 hover:text-white"
+                onClick={() => setActiveCategory(cat)}
+                className={`text-[9px] md:text-[11px] tracking-[0.3em] whitespace-nowrap transition-colors cursor-pointer ${activeCategory === cat ? "text-accent-red font-bold" : "text-white/30 hover:text-white"
                   }`}
               >
                 {cat}
@@ -43,8 +50,9 @@ export default function Collection() {
 
         {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 lg:gap-32">
-          {projects.map((project, i) => (
+          {filteredProjects.map((project, i) => (
             <motion.div
+              layout
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
