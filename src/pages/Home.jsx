@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const fadeIn = {
   initial: { opacity: 0, y: 30 },
@@ -131,7 +132,7 @@ export default function Home() {
             className="flex flex-col sm:flex-row justify-between items-baseline gap-4 mb-16 md:mb-24"
           >
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase">FEATURED WORK</h2>
-            <a href="/collection" className="text-[10px] md:text-[11px] tracking-[0.2em] text-accent-red hover:text-white transition-colors no-underline border-b border-accent-red pb-1">VIEW ALL PROJECTS</a>
+            <Link to="/collection" className="text-[10px] md:text-[11px] tracking-[0.2em] text-accent-red hover:text-white transition-colors no-underline border-b border-accent-red pb-1">VIEW ALL PROJECTS</Link>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
